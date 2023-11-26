@@ -15,6 +15,7 @@ section{
     align-items: center;
     justify-content: center;
     color: #fff;
+    perspective: 1000px;
 }
 section::before{
     content: "";
@@ -39,6 +40,8 @@ section::after{
     width: 375px;   
     position: relative;
     z-index: 100;
+    transition: 0.6s;
+    transform-style: preserve-3d;
 }
 .container .card{
     height: 100%;
@@ -84,4 +87,52 @@ h5.number{
 }
 h5.name{
     margin-top: 24px;
+}
+.card.back-face{
+    border: none;
+    transform: rotateY('180deg');
+}
+.card.back-face h6{
+    font-size: 8px;
+}
+.card.back-face .magnetic-strip{
+    position: absolute;
+    top: 40px;
+    left: 0;
+    height: 45px;
+    width: 80%;
+    background: #000;
+}
+.card.back-face{
+    padding: 15px 25px 25px 25px;
+}
+.card.back-face .signature{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 80px;
+    height: 85px;
+    border-radius: 6px;
+    background: #fff;
+    background: repeating-linear-gradient(#fff, #fff 3px, #efefef 0px, #efefef 9px);
+}
+.signature i{
+    color: #000;
+    font-size: 12px;
+    margin-right: 30px;
+    background-color: #fff;
+    padding: 4px 6px;
+    border-radius: 4px;
+    z-index: -1;
+}
+.card.back-face h5{
+    font-size: 8px;
+    margin-top: 15px;
+}
+.container .card{
+    position: absolute;
+    backface-visibility: hidden;
+}
+.container:hover{
+    transform: rotateY(180deg);
 }
